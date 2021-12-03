@@ -2,7 +2,7 @@
 const addButton = document.getElementById('add');
 let inputTask = document.getElementById('new-task');
 const elementForm = document.getElementById('form');
-const highPriorityTask = document.getElementById('high-prioority-task');
+const highPriorityTask = document.getElementById('high-priority-task');
 
 function createNewElement(task) {
 	let taskElement = document.createElement('li');
@@ -31,5 +31,5 @@ function addTask() {
 }
 
 addButton.addEventListener('click', function (event) {
-	addTask;
+	addTask();
 })
