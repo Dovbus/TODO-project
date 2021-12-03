@@ -128,7 +128,7 @@ label {
 
 .task-button {
 	content: "";
-	background: url("close-icon.svg") no-repeat;
+	background: url("../images/close-icon.svg") no-repeat;
 	background-size: cover;
 	width: 15px;
 	height: 15px;
