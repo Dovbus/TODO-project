@@ -18,7 +18,7 @@
 		<div class="task new-hightask">
 			<form id="form" action="#" novalidate>
 				<input id="new-task" type="text" name="highPriority" id="highPriority" placeholder="Добавить важных дел">
-				<input id="add" class="task-button add high-priority" type="submit" value="sub">
+				<input class="task-button add high-priority" type="button" value="sub">
 			</form>
 		</div>
 		<div>
@@ -50,20 +50,25 @@
 			LOW
 		</h4>
 		<div class="task new-lowtask">
-			<form action="">
-				<input type="text" name="lowPriority" id="lowPriority" placeholder="Добавить">
-				<input class="task-button add" type="button" value="add">
+			<form id="form2" action="#" novalidate>
+				<input id="new-task2" type="text" name="lowPriority" id="lowPriority" placeholder="Добавить">
+				<input id="add2" class="task-button add" type="button" value="sub">
 			</form>
 		</div>
-		<div class="task">
-			<input class="checkbox" type="checkbox" name="4" id="4">
-			<label for="4">
-				Посмотреть ютубчик
-			</label>
-			<input class="task-button" type="button" value="close">
+		<div class="">
+			<ul id="low-priority-task">
+				<li>
+					<input class="checkbox" type="checkbox" name="4" id="4">
+					<label for="4">
+						Посмотреть ютубчик
+					</label>
+					<input class="task-button" type="button" value="close">
+				</li>
+			</ul>
 		</div>
 	</div>
-	<script src="js/main.js"></script>
+	<script src="js/main.js" type="module"></script>
+	<script src="js/view.js" type="module"></script>
 </body>
 
 </html>
