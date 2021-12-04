@@ -18,11 +18,9 @@ function createNewElement(task) {
 
 	let deleteButton = document.createElement('input');
 	deleteButton.type = 'button';
-	deleteButton.classList.add('task-button');
+	deleteButton.classList.add('delete-button');
 
-	taskElement.appendChild(checkButton);
-	taskElement.appendChild(label);
-	taskElement.appendChild(deleteButton);
+	taskElement.append(checkButton, label, deleteButton);
 
 	checkButton.addEventListener('click', function (event) {
 		changeStatus(event.target);
@@ -38,12 +36,13 @@ function createNewElement(task) {
 function addHighTask() {
 	if (inputTaskHigh.value) {
 		let taskElement = createNewElement(inputTaskHigh.value);
-		highPriorityTask.appendChild(taskElement);
+		highPriorityTask.append(taskElement);
 
 		inputTaskHigh.value = '';
 	}
 }
 
+console.log(elementHighForm)
 elementHighForm.addEventListener('submit', function (event) {
 	event.preventDefault();
 	addHighTask();
@@ -52,7 +51,7 @@ elementHighForm.addEventListener('submit', function (event) {
 function addLowTask() {
 	if (inputTaskLow.value) {
 		let taskElement = createNewElement(inputTaskLow.value);
-		lowPriorityTask.appendChild(taskElement);
+		lowPriorityTask.append(taskElement);
 		inputTaskLow.value = '';
 	}
 }
@@ -70,7 +69,10 @@ for (const button of doneButtons) {
 }
 
 function changeStatus(button) {
-	button.parentElement.classList.toggle('changebg');
+	const ul = button.parentElement.parentElement;
+	const li = button.parentElement;
+	li.classList.toggle('changebg');
+	ul.append(li);
 }
 
 for (const button of deleteButtons) {

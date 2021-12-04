@@ -7,4 +7,4 @@ export const lowPriorityTask = document.getElementById('low-priority-task');
 
 export const doneButtons = document.querySelectorAll('.checkbox');
 
-export const deleteButtons = document.querySelectorAll('.task-button');
+export const deleteButtons = document.querySelectorAll('.delete-button');
