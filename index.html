@@ -2,73 +2,72 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ToDo</title>
-	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:regular" rel="stylesheet" />
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ToDo</title>
+   <link rel="stylesheet" href="style.css">
+   <link href="https://fonts.googleapis.com/css?family=Roboto:regular" rel="stylesheet" />
 </head>
 
 <body>
-	<div class="wrapper">
-		<h4 class="high">
-			HIGH
-		</h4>
-		<div class="task new-hightask">
-			<form id="form" action="#" novalidate>
-				<input id="new-task" type="text" name="highPriority" placeholder="Добавить важных дел">
-				<input class="add task-button high-priority" type="submit" value="sub">
-			</form>
-		</div>
-		<div>
-			<ul id="high-priority-task">
-				<li>
-					<input class="checkbox" type="checkbox" name="1" id="1">
-					<label for="1"> Вот вам и супер интересная тема.
-						Вы наверняка заметили что ваши файлы с кодом становятся все объемнее, что хочется вынести некоторые
-						вещи
-						куда-то за пределы основной программы.</label>
-					<input class="delete-button task-button" type="button" value="close">
-				</li>
-				<li>
-					<input class="checkbox" type="checkbox" name="2" id="2">
-					<label for="2">
-						Сверстать этот TODO list
-					</label>
-					<input class="delete-button task-button" type="button" value="close">
-				</li>
-				<li>
-					<input class="checkbox" type="checkbox" name="3" id="3">
-					<label for="3"> Начать делать задачу
-					</label>
-					<input class="delete-button task-button" type="button" value="close">
-				</li>
-			</ul>
-		</div>
-		<h4 class="low">
-			LOW
-		</h4>
-		<div class="task new-lowtask">
-			<form id="form2" action="#" novalidate>
-				<input type="text" name="lowPriority" id="lowPriority" placeholder="Добавить">
-				<input class="add task-button" type="button" value="sub">
-			</form>
-		</div>
-		<div class="">
-			<ul id="low-priority-task">
-				<li>
-					<input class="checkbox" type="checkbox" name="4" id="4">
-					<label for="4">
-						Посмотреть ютубчик
-					</label>
-					<input class="delete-button task-button" type="button" value="close">
-				</li>
-			</ul>
-		</div>
-	</div>
-	<script src="js/main.js" type="module"></script>
-	<script src="js/view.js" type="module"></script>
+   <div class="wrapper">
+      <h4 class="high">
+         HIGH
+      </h4>
+      <div class="task new-hightask">
+         <form action="#" novalidate>
+            <input class="new-task-high" type="text" name="highPriority" placeholder="Добавить важных дел">
+            <input class="add task-button" type="submit" value="sub">
+         </form>
+      </div>
+      <div>
+         <ul id="high-priority-list">
+            <li>
+               <input class="checkbox" type="checkbox" name="1" id="1">
+               <label for="1"> Вот вам и супер интересная тема.
+                  Вы наверняка заметили что ваши файлы с кодом становятся все объемнее, что хочется вынести некоторые
+                  вещи
+                  куда-то за пределы основной программы.</label>
+               <input class="delete-button task-button" type="button">
+            </li>
+            <li>
+               <input class="checkbox" type="checkbox" name="2" id="2">
+               <label for="2">
+                  Сверстать этот TODO list
+               </label>
+               <input class="delete-button task-button" type="button">
+            </li>
+            <li>
+               <input class="checkbox" type="checkbox" name="3" id="3">
+               <label for="3"> Начать делать задачу
+               </label>
+               <input class="delete-button task-button" type="button">
+            </li>
+         </ul>
+      </div>
+      <h4 class="low">
+         LOW
+      </h4>
+      <div class="task new-lowtask">
+         <form action="#" novalidate>
+            <input class="new-task-low" type="text" name="lowPriority" placeholder="Добавить">
+            <input class="add task-button" type="submit" value="sub">
+         </form>
+      </div>
+      <!-- <div class=""> -->
+      <ul id="low-priority-list">
+         <li>
+            <input class="checkbox" type="checkbox" name="4" id="4">
+            <label for="4">
+               Посмотреть ютубчик
+            </label>
+            <input class="delete-button task-button" type="button">
+         </li>
+      </ul>
+      <!-- </div> -->
+   </div>
+   <script src="js/main.js" type="module"></script>
 </body>
 
 </html>

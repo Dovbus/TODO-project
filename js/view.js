@@ -1,10 +1,13 @@
-export const inputTaskHigh = document.getElementById('new-task');
-export const elementHighForm = document.getElementById('form');
-export const highPriorityTask = document.getElementById('high-priority-task');
-export const inputTaskLow = document.getElementById('new-task2');
-export const elementLowForm = document.getElementById('form2');
-export const lowPriorityTask = document.getElementById('low-priority-task');
+export const UI_ELEM = {
+   FORMS: document.querySelectorAll('form'),
 
-export const doneButtons = document.querySelectorAll('.checkbox');
+   NEW_TASK_HIGH: document.querySelector('.new-task-high'),
+   NEW_TASK_LOW: document.querySelector('.new-task-low'),
 
-export const deleteButtons = document.querySelectorAll('.delete-button');
+   HIGH_PRIORITY_LIST: document.getElementById('high-priority-list'),
+   LOW_PRIORITY_LIST: document.getElementById('low-priority-list'),
+
+   DONE_BUTTONS: document.querySelectorAll('.checkbox'),
+   DELETE_BUTTONS: document.querySelectorAll('.delete-button'),
+}
+
