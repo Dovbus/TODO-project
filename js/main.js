@@ -1,5 +1,28 @@
 import { UI_ELEM } from './view.js'
+import { storage } from './storage.js'
 let id = 4;
+
+function initial() {
+   if (localStorage.getItem('highTasks')) {
+      const highTasks = storage.getHighTasks();
+      for (let elem of highTasks) {
+         addTask(elem, UI_ELEM.HIGH_PRIORITY_LIST)
+      }
+   } else {
+      localStorage.setItem('highTasks', `[]`)
+   }
+
+   if (localStorage.getItem('lowTasks')) {
+      const lowTasks = storage.getLowTasks();
+      for (let elem of lowTasks) {
+         addTask(elem, UI_ELEM.LOW_PRIORITY_LIST)
+      }
+   } else {
+      localStorage.setItem('lowTasks', `[]`)
+   }
+}
+
+initial();
 
 function createNewElement(task) {
 
@@ -24,7 +47,8 @@ function createNewElement(task) {
    })
 
    deleteButton.addEventListener('click', function (event) {
-      deleteTask(event.target);
+      deleteStorageTasks(event.target.parentElement.textContent);
+      deleteUiTask(event.target);
    })
 
    return taskElement;
@@ -37,16 +61,28 @@ UI_ELEM.FORMS.forEach(element => {
       let isValidInput = Boolean(UI_ELEM.NEW_TASK_HIGH.value || UI_ELEM.NEW_TASK_LOW.value);
 
       if (!isValidInput) { return }
-      element.firstElementChild.classList.contains('new-task-high') ?
-         addTask(UI_ELEM.NEW_TASK_HIGH, UI_ELEM.HIGH_PRIORITY_LIST) :
-         addTask(UI_ELEM.NEW_TASK_LOW, UI_ELEM.LOW_PRIORITY_LIST)
+      if (element.firstElementChild.classList.contains('new-task-high')) {
+         const highTask = addTask(UI_ELEM.NEW_TASK_HIGH, UI_ELEM.HIGH_PRIORITY_LIST);
+         const highPriorTasks = storage.getHighTasks();
+         highPriorTasks.push(highTask);
+         storage.saveHighTasks(highPriorTasks)
+      } else {
+         const lowTask = addTask(UI_ELEM.NEW_TASK_LOW, UI_ELEM.LOW_PRIORITY_LIST);
+         const lowPriorTasks = storage.getLowTasks();
+         lowPriorTasks.push(lowTask);
+         storage.saveLowTasks(lowPriorTasks);
+      }
+      this.reset();
    })
 });
 
+
 function addTask(task, list) {
-   const newTask = createNewElement(task.value);
+   const newTask = task.value ? createNewElement(task.value) : createNewElement(task);
    list.append(newTask);
-   task.value = '';
+   const taskName = task.value;
+   newTask.value = '';
+   return taskName;
 }
 
 
@@ -65,14 +101,37 @@ function changeStatus(button) {
 
 for (const button of UI_ELEM.DELETE_BUTTONS) {
    button.addEventListener('click', function (event) {
-      deleteTask(event.target);
+      deleteStorageTasks(event.target.parentElement.textContent);
+      deleteUiTask(event.target);
    })
 }
 
-function deleteTask(button) {
+function deleteUiTask(button) {
    button.parentElement.remove();
 }
 
+function deleteStorageTasks(task) {
+   const highTasks = storage.getHighTasks();
+   const lowTasks = storage.getLowTasks();
+
+   if (highTasks.includes(task)) {
+      let filteredTasks = highTasks.filter(elem => elem !== task);
+      storage.saveHighTasks(filteredTasks)
+   } else {
+      let filteredTasks = lowTasks.filter(elem => elem !== task);
+      storage.saveLowTasks(filteredTasks)
+   }
+}
 
 
+// const container = document.getElementById("container");
 
+// document.addEventListener("click", handle);
+
+// function handle(e) {
+//    if (!e.target.classList.contains('element')) {
+//       return
+//    }
+//    const newEl = e.target.cloneNode(true);
+//    container.appendChild(newEl);
+// }
